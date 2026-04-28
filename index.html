@@ -6,9 +6,9 @@
   <meta
     name="description"
     data-i18n-attr="description"
-    content="L3L Trading exports USA-sourced, internationally certified medical equipment to Latin America with bilingual support and 40 years of industry experience."
+    content="L3L Medical Trading exports USA-sourced, internationally certified medical equipment to Latin America with bilingual support and 40 years of industry experience."
   />
-  <title>L3L Trading | Medical Equipment Export</title>
+  <title>L3L Medical Trading | Medical Equipment Export</title>
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet" />
@@ -36,14 +36,16 @@
     <div class="container header-inner">
       <a href="#home" class="brand">
         <span class="brand-mark" aria-hidden="true">
-          <span class="brand-mark-top">
-            <span class="brand-mark-code">L3L</span>
-            <span class="brand-mark-arrow"></span>
-          </span>
-          <span class="brand-mark-bottom">TRADING</span>
+          <svg viewBox="0 0 64 64" focusable="false">
+            <path class="brand-mark-globe" d="M32 8a24 24 0 1 0 0 48 24 24 0 0 0 0-48Z" />
+            <path class="brand-mark-route" d="M11 34h34m-8-8 8 8-8 8" />
+            <path class="brand-mark-latitude" d="M14 24h36M14 44h36" />
+            <path class="brand-mark-meridian" d="M32 8c7 7 10 15 10 24S39 49 32 56M32 8c-7 7-10 15-10 24s3 17 10 24" />
+            <path class="brand-mark-cross" d="M29 20h6v7h7v6h-7v7h-6v-7h-7v-6h7z" />
+          </svg>
         </span>
         <span class="brand-text">
-          <strong>L3L Trading</strong>
+          <strong>L3L Medical Trading</strong>
           <small data-i18n="brand.tagline">USA Medical Equipment Export</small>
         </span>
       </a>
@@ -62,7 +64,7 @@
       <div class="container hero-inner">
         <div class="hero-copy">
           <span class="eyebrow" data-i18n="hero.eyebrow">USA-Sourced | Internationally Certified | Latin America Friendly</span>
-          <h1 data-i18n="hero.title">L3L Trading</h1>
+          <h1 data-i18n="hero.title">L3L Medical Trading</h1>
           <p class="hero-lead" data-i18n="hero.subtitle">For 40 years we have sourced medical equipment from the United States and delivered export-ready solutions for hospitals, clinics, distributors, and public health buyers across Latin America.</p>
           <div class="hero-ctas">
             <a href="#equipment" class="btn btn-primary" data-i18n="hero.ctaPrimary">View Equipment</a>
@@ -132,9 +134,9 @@
     <section id="about" class="section">
       <div class="container two-col">
         <div>
-          <span class="eyebrow" data-i18n="about.eyebrow">About L3L Trading</span>
+          <span class="eyebrow" data-i18n="about.eyebrow">About L3L Medical Trading</span>
           <h2 data-i18n="about.title">A medical export company built around trust, documentation, and regional fluency.</h2>
-          <p data-i18n="about.p1">L3L Trading works with healthcare buyers that need authentic medical equipment sourced in the United States, shipped with clean paperwork, and supported by a team that understands Latin American procurement realities.</p>
+          <p data-i18n="about.p1">L3L Medical Trading works with healthcare buyers that need authentic medical equipment sourced in the United States, shipped with clean paperwork, and supported by a team that understands Latin American procurement realities.</p>
           <p data-i18n="about.p2">We are especially positioned for Venezuela and Colombia, while also supporting broader Spanish-speaking and regional opportunities with bilingual communication, coordinated freight planning, and compliance-minded commercial packaging.</p>
           <ul class="check-list">
             <li data-i18n="about.l1">USA-sourced medical equipment from recognized manufacturers</li>
@@ -144,7 +146,7 @@
           </ul>
         </div>
         <div class="about-card">
-          <h3 data-i18n="about.cardTitle">Why L3L Trading</h3>
+          <h3 data-i18n="about.cardTitle">Why L3L Medical Trading</h3>
           <div class="mini-grid">
             <div>
               <span class="mini-num">01</span>
@@ -343,43 +345,44 @@
           <h2 data-i18n="contact.title">Request a quote, distributor packet, or export documentation checklist.</h2>
           <p data-i18n="contact.p1">Share the market, product line, or institutional buyer you are targeting. We can prepare a bilingual response with equipment options, manufacturer references, and documentation guidance.</p>
           <ul class="contact-list">
-            <li><strong data-i18n="contact.email">Email</strong><span>sales@l3ltrading.com</span></li>
-            <li><strong data-i18n="contact.phone">Phone</strong><span>+1 (305) 000-0000</span></li>
+            <li><strong data-i18n="contact.email">Email</strong><span><a href="mailto:jonathan@layer3labs.io">jonathan@layer3labs.io</a></span></li>
+            <li><strong data-i18n="contact.phone">Phone</strong><span><a href="tel:+19546412945">+1 954 641 2945</a></span></li>
             <li><strong data-i18n="contact.office">Office</strong><span>Miami, Florida, USA</span></li>
             <li><strong data-i18n="contact.lang">Languages</strong><span data-i18n="contact.langVal">English and Spanish</span></li>
           </ul>
         </div>
-        <form class="contact-form" onsubmit="event.preventDefault(); alert(window.__t('contact.thanks'));">
+        <form class="contact-form" id="leadForm">
           <label>
             <span data-i18n="contact.fName">Full Name</span>
-            <input type="text" required />
+            <input type="text" name="name" required />
           </label>
           <label>
             <span data-i18n="contact.fCompany">Company / Hospital</span>
-            <input type="text" required />
+            <input type="text" name="company" required />
           </label>
           <label>
             <span data-i18n="contact.fCountry">Target Market</span>
-            <select required>
-              <option>Venezuela</option>
-              <option>Colombia</option>
-              <option>Mexico</option>
-              <option>Peru</option>
-              <option>Ecuador</option>
-              <option>Panama</option>
-              <option>Dominican Republic</option>
+            <select name="country" required>
+              <option value="Venezuela">Venezuela</option>
+              <option value="Colombia">Colombia</option>
+              <option value="Mexico">Mexico</option>
+              <option value="Peru">Peru</option>
+              <option value="Ecuador">Ecuador</option>
+              <option value="Panama">Panama</option>
+              <option value="Dominican Republic">Dominican Republic</option>
               <option data-i18n="contact.fOther">Other</option>
             </select>
           </label>
           <label>
             <span data-i18n="contact.fEmail">Email</span>
-            <input type="email" required />
+            <input type="email" name="email" required />
           </label>
           <label>
             <span data-i18n="contact.fMsg">Products or documentation requested</span>
-            <textarea rows="5" required></textarea>
+            <textarea rows="5" name="message" required></textarea>
           </label>
-          <button type="submit" class="btn btn-primary" data-i18n="contact.fSubmit">Send Request</button>
+          <p class="form-status" id="leadFormStatus" aria-live="polite"></p>
+          <button type="submit" class="btn btn-primary" id="leadFormSubmit" data-i18n="contact.fSubmit">Send Request</button>
         </form>
       </div>
     </section>
@@ -390,14 +393,16 @@
       <div>
         <div class="brand brand-footer">
           <span class="brand-mark" aria-hidden="true">
-            <span class="brand-mark-top">
-              <span class="brand-mark-code">L3L</span>
-              <span class="brand-mark-arrow"></span>
-            </span>
-            <span class="brand-mark-bottom">TRADING</span>
+            <svg viewBox="0 0 64 64" focusable="false">
+              <path class="brand-mark-globe" d="M32 8a24 24 0 1 0 0 48 24 24 0 0 0 0-48Z" />
+              <path class="brand-mark-route" d="M11 34h34m-8-8 8 8-8 8" />
+              <path class="brand-mark-latitude" d="M14 24h36M14 44h36" />
+              <path class="brand-mark-meridian" d="M32 8c7 7 10 15 10 24S39 49 32 56M32 8c-7 7-10 15-10 24s3 17 10 24" />
+              <path class="brand-mark-cross" d="M29 20h6v7h7v6h-7v7h-6v-7h-7v-6h7z" />
+            </svg>
           </span>
           <span class="brand-text">
-            <strong>L3L Trading</strong>
+            <strong>L3L Medical Trading</strong>
             <small data-i18n="footer.tag">USA medical equipment export for Latin America</small>
           </span>
         </div>
@@ -405,7 +410,7 @@
       </div>
       <div>
         <h4 data-i18n="footer.contact">Contact</h4>
-        <p>sales@l3ltrading.com<br />+1 (305) 000-0000<br />Miami, FL, USA</p>
+        <p>jonathan@layer3labs.io<br />+1 954 641 2945<br />Miami, FL, USA</p>
       </div>
       <div>
         <h4 data-i18n="footer.cert">Compliance Signals</h4>
@@ -413,7 +418,7 @@
       </div>
     </div>
     <div class="container footer-bottom">
-      <span>&copy; <span id="year"></span> L3L Trading. <span data-i18n="footer.rights">All rights reserved.</span></span>
+      <span>&copy; <span id="year"></span> L3L Medical Trading. <span data-i18n="footer.rights">All rights reserved.</span></span>
       <span class="flag-strip" aria-hidden="true">
         <span class="flag flag-us"></span>
         <span class="flag flag-ve"></span>

@@ -1,0 +1,14 @@
+{
+  "name": "l3l-medical-trading-site",
+  "version": "1.0.0",
+  "private": true,
+  "description": "L3L Medical Trading site with lead capture backend",
+  "scripts": {
+    "start": "node server.js"
+  },
+  "dependencies": {
+    "express": "^4.21.2",
+    "nodemailer": "^6.10.1",
+    "pg": "^8.13.3"
+  }
+}

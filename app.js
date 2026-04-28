@@ -8,6 +8,9 @@
   const equipGrid = document.getElementById("equipGrid");
   const langButtons = Array.from(document.querySelectorAll(".lang-btn"));
   const filterButtons = Array.from(document.querySelectorAll(".chip"));
+  const leadForm = document.getElementById("leadForm");
+  const leadFormStatus = document.getElementById("leadFormStatus");
+  const leadFormSubmit = document.getElementById("leadFormSubmit");
 
   function t(key) {
     return (translations[currentLang] && translations[currentLang][key]) ||
@@ -81,8 +84,8 @@
     });
 
     const title = currentLang === "es"
-      ? "L3L Trading | Exportacion de Equipos Medicos"
-      : "L3L Trading | Medical Equipment Export";
+      ? "L3L Medical Trading | Exportacion de Equipos Medicos"
+      : "L3L Medical Trading | Medical Equipment Export";
     document.title = title;
   }
 
@@ -117,6 +120,42 @@
       setFilter(button.dataset.filter);
     });
   });
+
+  if (leadForm) {
+    leadForm.addEventListener("submit", async function (event) {
+      event.preventDefault();
+
+      const formData = new FormData(leadForm);
+      const payload = Object.fromEntries(formData.entries());
+
+      leadFormStatus.textContent = t("contact.sending");
+      leadFormStatus.className = "form-status";
+      leadFormSubmit.disabled = true;
+
+      try {
+        const response = await fetch("/api/leads", {
+          method: "POST",
+          headers: {
+            "Content-Type": "application/json"
+          },
+          body: JSON.stringify(payload)
+        });
+
+        if (!response.ok) {
+          throw new Error("Lead submission failed");
+        }
+
+        leadForm.reset();
+        leadFormStatus.textContent = t("contact.saved");
+        leadFormStatus.className = "form-status success";
+      } catch (error) {
+        leadFormStatus.textContent = t("contact.error");
+        leadFormStatus.className = "form-status error";
+      } finally {
+        leadFormSubmit.disabled = false;
+      }
+    });
+  }
 
   document.getElementById("year").textContent = String(new Date().getFullYear());
   setLanguage(defaultLang);
