@@ -2,7 +2,6 @@ services:
   - type: web
     name: layer3trading-site
     runtime: static
-    plan: free
     branch: main
     autoDeploy: true
     buildCommand: echo "Static site ready"
