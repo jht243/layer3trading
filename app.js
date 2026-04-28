@@ -51,7 +51,7 @@
           <h3 class="equip-name">${itemName}</h3>
           <p class="equip-desc">${itemDesc}</p>
           <div class="equip-tags">
-            <span>${item.cert}</span>
+            <span>${t("equipment.certified")}</span>
           </div>
           <div class="equip-meta">
             <div>
