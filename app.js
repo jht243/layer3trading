@@ -1,6 +1,7 @@
 (function () {
-  const defaultLang = "en";
-  let currentLang = defaultLang;
+  const fallbackLang = "en";
+  const languageStorageKey = "l3l-medical-trading-lang";
+  let currentLang = fallbackLang;
   let currentFilter = "all";
 
   const translations = window.I18N || {};
@@ -14,8 +15,34 @@
 
   function t(key) {
     return (translations[currentLang] && translations[currentLang][key]) ||
-      (translations[defaultLang] && translations[defaultLang][key]) ||
+      (translations[fallbackLang] && translations[fallbackLang][key]) ||
       key;
+  }
+
+  function getPreferredLanguage() {
+    const savedLang = window.localStorage.getItem(languageStorageKey);
+    if (savedLang && translations[savedLang]) {
+      return savedLang;
+    }
+
+    const browserLanguages = navigator.languages && navigator.languages.length
+      ? navigator.languages
+      : [navigator.language || fallbackLang];
+
+    const preferred = browserLanguages.find((language) => {
+      if (!language) {
+        return false;
+      }
+
+      const shortCode = String(language).toLowerCase().split("-")[0];
+      return Boolean(translations[shortCode]);
+    });
+
+    if (!preferred) {
+      return fallbackLang;
+    }
+
+    return String(preferred).toLowerCase().split("-")[0];
   }
 
   function prettifyCategory(category) {
@@ -90,7 +117,8 @@
   }
 
   function setLanguage(lang) {
-    currentLang = translations[lang] ? lang : defaultLang;
+    currentLang = translations[lang] ? lang : fallbackLang;
+    window.localStorage.setItem(languageStorageKey, currentLang);
     window.__t = t;
     applyTranslations();
     renderEquipment();
@@ -158,6 +186,6 @@
   }
 
   document.getElementById("year").textContent = String(new Date().getFullYear());
-  setLanguage(defaultLang);
+  setLanguage(getPreferredLanguage());
   setFilter(currentFilter);
 })();
